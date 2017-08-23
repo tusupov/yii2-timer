@@ -7,6 +7,7 @@ use yii\db\Migration;
  */
 class m170822_070424_create_user_table extends Migration
 {
+
     /**
      * @inheritdoc
      */
@@ -23,7 +24,7 @@ class m170822_070424_create_user_table extends Migration
             'auth_key'      => $this->string(),
             'created_at'    => $this->integer()->notNull(),
             'updated_at'    => $this->integer(),
-            'lastlogin_at'  => $this->integer(),
+            'time'          => $this->integer()->defaultValue(0),
         ], $tableOptions);
 
     }

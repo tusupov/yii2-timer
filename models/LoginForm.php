@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\Html;
 
 /**
  * LoginForm is the model behind the login form.
@@ -78,10 +79,10 @@ class LoginForm extends Model
 
         if ($this->validate() && Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0)) {
 
-            $user->lastlogin_at = time();
-            $user->save();
+            $username = Html::encode($this->getUser()->username);
 
-            Yii::$app->getSession()->set("login", $this->getUser()->username);
+            Yii::$app->getSession()->set("login", $username);
+            Yii::$app->getSession()->set("ut_{$username}", $this->getUser()->time);
 
             return true;
 

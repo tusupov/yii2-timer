@@ -24,7 +24,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/timer.js'
+        'js/UT.js'
     ];
 
     public $depends = [

@@ -17,7 +17,7 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property integer $created_at
  * @property integer $updated_at
- * @property integer $lastlogin_at
+ * @property integer $time
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -56,7 +56,7 @@ class User extends ActiveRecord implements IdentityInterface
                 'required'
             ],
             [
-                ['created_at', 'updated_at', 'lastlogin_at'],
+                ['created_at', 'updated_at', 'time'],
                 'integer'
             ],
             [
@@ -86,7 +86,7 @@ class User extends ActiveRecord implements IdentityInterface
             'auth_key'     => 'Auth Key',
             'created_at'   => 'Время создания',
             'updated_at'   => 'Время изменение',
-            'lastlogin_at' => 'Время последнего входа',
+            'time'         => 'Время прибытя на сайте',
         ];
 
     }

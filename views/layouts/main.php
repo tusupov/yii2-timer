@@ -36,18 +36,21 @@ AppAsset::register($this);
         ],
     ]);
 
-    $menuItems = [];
+    $menuItems = [
+        ['label' => 'О нас', 'url' => ['/site/about']]
+    ];
 
     if (Yii::$app->user->isGuest) {
 
-        $menuItems = [
+        array_push(
+            $menuItems,
             ['label' => 'Войти', 'url' => ['/site/login']],
             ['label' => 'Регистрация', 'url' => ['/site/signup']]
-        ];
+        );
 
     } else {
 
-        $menuItems = [
+        $menuItems[] =
             '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -56,7 +59,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>'
-        ];
+        ;
 
     }
 
@@ -78,11 +81,31 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
+
     <div class="container">
-        <p class="pull-left">&copy; <?=Yii::$app->name?> <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+
+        <div class="row">
+            <div class="col-md-4">&copy; <?= Yii::$app->name ?> <?= date('Y') ?></div>
+            <div class="col-md-4 text-center ut"></div>
+            <div class="col-md-4 text-right"><?= Yii::powered() ?></div>
+        </div>
+
     </div>
+
 </footer>
+
+<?if(!Yii::$app->user->isGuest){
+
+    $username = Html::encode(Yii::$app->user->identity->username);
+    $time     = (int) Yii::$app->user->identity->time;
+
+    $this->registerJs("
+        var ut = new UT()
+        ut.startFunc('ut_{$username}', $time)
+    ");
+
+}?>
+
 
 <?php $this->endBody() ?>
 </body>
