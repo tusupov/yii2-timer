@@ -35,6 +35,7 @@ UT.prototype.startFunc = function (timeFlag, userServerTime) {
 
     UT.startTime = Math.floor((new Date()).getTime() / 1000)
 
+
     var serverTime = +userServerTime || 0,
         localTime  = +localStorage[UT.localTimeFlag] || 0;
 
@@ -42,7 +43,7 @@ UT.prototype.startFunc = function (timeFlag, userServerTime) {
 
     var interval = function(){
 
-        var distance = localStorage[UT.localTimeFlag];
+        var distance = currectTime;
 
         var timer = [];
 

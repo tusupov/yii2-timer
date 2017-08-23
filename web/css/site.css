@@ -21,11 +21,9 @@ body {
     padding-top: 20px;
 }
 
-.big-timer {
+.ut {
     font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
-    text-align: center;
-    font-size: 40px;
-    line-height: 50px;
+    line-height: 14px;
     font-weight: bold;
 }
 
